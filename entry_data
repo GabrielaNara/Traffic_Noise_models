@@ -1,0 +1,54 @@
+#DADOS DE ENTRADA
+#Esse procedimento pressupõe um arquivo no software QGIS contendo alguns elementos, como posição das vias, dos receptores, semáforos e edificações.
+# Além dos arquivos abaixo, o procedimento necessita outras VARIÁVEIS indicadas nos arquivos de cada modelo.
+# Os modelos utilizam os seguintes dados de entrada:
+
+# --------------------
+# MEDICAO
+# --------------------
+#Arquivo em formato xlsx que indica os valores medidos em campo. 
+#Esse arquivo deve conter as colunas a seguir, com o prefixo "nome_", onde nome é o nome da avenida. 
+#Separar os dados em colunas para cada avenida.
+ #   Tmed = tempo de medição
+ #   leve = fluxo de veículos leves
+ #   pesado = fluxo de veículos pesados
+ #   art = fluxo de veículos pesados articulados (3 eixos)
+ #   moto = fluxo de motos
+ #   vel = Velocidade dos veículos
+
+# --------------------
+# PONTOS_EMISSORES
+# --------------------
+#Arquivo em formato xlsx que representa a tabela de atrbutos dos pontos emissores no software QGIS
+#Esse arquivo deve conter as seguints colunas:
+#    idpoint = ID do ponto emissor   
+#    nome = nome da avenida analisada  
+#    longitude = coordenada X georreferenciada
+#    latitude = coordenada Y georreferenciada
+#    Hubdist = distancia do ponto emissor ao semáforo mais próximo
+#    w = largura entre edificações da avenida
+#    pav = tipo de pavimento da avenida (default = asfalto)
+#    slope = inclinação da avenida no terreno (default i < 3%)
+#    Hbuild = atura média das edificações lindeiras à via
+
+# --------------------
+# PONTOS_EMISSORES
+# --------------------
+#Arquivo em formato xlsx que representa a tabela de atrbutos dos pontos receptores no software QGIS
+#Esse arquivo deve conter as seguints colunas:
+#    idpoint = ID do ponto de medicao 
+#    nome = nome do ponto 
+#    longitude = coordenada X georreferenciada
+#    latitude = coordenada Y georreferenciada
+
+# --------------------
+# MATRIZ_DISTANCIAS
+# --------------------
+#Arquivo em formato xlsx com a matriz de distância de todos os pontos emissores e receptores, contendo 
+#as seguintes colunas: ["pte","ptr","distancia"], onde:
+#    pte = ID do ponto emissor
+#    pte = ID do ponto receptor
+#    distancia = distancia entre cada ponto emissor e receptor 
+
+#DADOS DE SAIDA
+#Como dado de saída o código retorna os valores em LAeq nos pontos receptores.
