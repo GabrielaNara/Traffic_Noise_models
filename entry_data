@@ -5,8 +5,9 @@
 # --------------------
 # MEDICAO
 # --------------------
-#Arquivo em formato xlsx que indica os valores medidos em campo.
-#Esse arquivo deve conter as seguints colunas:
+#Arquivo em formato xlsx que indica os valores medidos em campo. 
+#Esse arquivo deve conter as colunas a seguir, com o prefixo "nome_", onde nome é o nome da avenida. 
+#Separar os dados em colunas para cada avenida.
  #   Tmed = tempo de medição
  #   leve = fluxo de veículos leves
  #   pesado = fluxo de veículos pesados
