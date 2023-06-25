@@ -28,9 +28,9 @@ for local in lista_locais:
     xlsx = pd.ExcelFile("MEDICAO.xlsx") 
     fluxo = pd.read_excel(xlsx, '%s' %local, index_col="medicao")
     
+    #definindo as avenidas:
     conjunto_vias = fluxo["nome"].unique()
-    print(conjunto_vias)
-    
+    print(conjunto_vias) 
     for via in conjunto_vias:
         fluxo["%s_leve" %via ].fillna("0", inplace = True)
         fluxo["%s_pesado" %via].fillna("0", inplace = True)
@@ -40,11 +40,10 @@ for local in lista_locais:
     #Shape de emissores do QGIS
     fe  = ("%s/PONTOS_EMISSORES_%s.csv") % (local,local) 
     dat_emissores  = pd.read_csv(fe)
-    #fe  = ("%s/Emissores_%s.shp") % (local,local) 
-    #dat_emissores  = gpd.read_file(fe)
     dat_emissores["id_point"] = dat_emissores["idpoint"]
     dat_emissores = dat_emissores.set_index("id_point")
     
+    #Shape de recptores do QGIS
     frM = ("%s/PONTOS_RECEPTORES_%s.shp") % (local,local) 
     dat_receptoresM = gpd.read_file(frM)
     dat_receptoresM ["id_point"] = dat_receptoresM['idpoint']
@@ -57,7 +56,6 @@ for local in lista_locais:
     # --------------------------------------------------------------------------------------------------------------------
     # CALCULOS RLS90:
     rls90 = [] 
-    #for x in [1]:
     for x in fluxo.index: #x é o numero da medicao
         for k in range(6):
             a = colunas[k]
@@ -82,6 +80,7 @@ for local in lista_locais:
                 HubDist = dat_emissores.HubDist[row] #distância do ponto ao semáforo mais próximo
             else:
                 HubDist = 120 
+                
             #CÁLCULOS
             #particao = distancia entre os pontos no eixo emissor
             particao = 1.5
