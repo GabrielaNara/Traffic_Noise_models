@@ -1,5 +1,6 @@
 #DADOS DE ENTRADA
 #Esse procedimento pressupõe um arquivo no software QGIS contendo alguns elementos, como posição das vias, dos receptores, semáforos e edificações.
+# Além dos arquivos abaixo, o procedimento necessita outras VARIÁVEIS indicadas nos arquivos de cada modelo.
 # Os modelos utilizam os seguintes dados de entrada:
 
 # --------------------
